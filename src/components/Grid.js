@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import {borderState} from './../classes/constants';
-import uuid from 'react-uuid'
 
 class Cell extends PureComponent {
     render() {
@@ -23,14 +22,13 @@ class Cell extends PureComponent {
 }
 
 const Row = props => {
-    const cells = props.row.map((cell, ind) => <Cell key={uuid()} {...cell}/>); 
+    const cells = props.row.map((cell, ind) => <Cell key={ind} {...cell}/>); 
     return (<div className="row">{cells}</div>)
 }
 
 
 const Grid = props => {
-    console.log(props)
-    const rows = props.grid.map((row, ind) => <Row key={uuid()} row={row}/>)
+    const rows = props.grid.map((row, ind) => <Row key={ind} row={row}/>)
     return (<div className="grid">{rows}</div>)
 }
 

@@ -10,17 +10,8 @@ export default class Maze_Base {
         }
         this.grid = this.createGrid(width, height)
         this.isDiagonalGame = includesDiagonal;
-        this.totalMoves = 0;
     }
 
-    increaseMoves() {
-        this.totalMoves += 1;
-    }
-
-    resetMoves() {
-        this.totalMoves = 0;
-    }
-    
     createGrid(width, height) {
         const row = i => [...Array(width)].map((__ele, j) => new Cell(i, j))
         const grid = [...Array(height)].map((__ele, i) => row(i))
@@ -84,7 +75,6 @@ export default class Maze_Base {
         const origin = this.grid[0][0].markVisited()
         const stack = [origin];
         while (stack.length > 0) {
-            this.increaseMoves()
             let cur = stack.pop();
             let unvisitedNei = Array.from(this.adjacentUnvisitedNeighbors(cur))
             if (unvisitedNei.length === 0) continue
